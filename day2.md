@@ -1,0 +1,120 @@
+##条件查询
+语法：  
+    select    查询列表  
+    from      表名  
+    where     筛选条件
+
+分类：  
+1. 按条件表达式筛选  
+   条件运算符：> < + != >= <=  
+2. 按逻辑表达式筛选  
+   逻辑运算符：
+          && || ！
+          and or not
+3. 模糊查询  
+   like  
+   between and  
+   in  
+   is null  
+###1.按条件表达式筛选  
+案例1：查询工资>12000的员工信息  
+select *   
+from employees  
+where salary>12000;  
+###2.按逻辑表达式筛选
+案例1：查询工资在10000到20000之间的员工名，工资，以及奖金  
+select last_name,salary,commission_pct   
+from employees  
+where salary>=10000 and salary<=20000  
+###3.模糊查询
+
+####like
+>like  
+特点：  
+一般和通配符搭配使用  
+通配符：  
+% 任意多个字符，包含0个字符  
+— 任意单个字符  
+
+案例1：查询员工名中包含字符a的员工信息  
+select *  
+from  employees  
+where last_name like '%a%';  
+案例2：查询员工名中第三个字符为n，第五个字符为l的员工名和工资  
+select last_name,salary  
+from employees  
+where  last_name like '__n_l';  
+案例3：查询员工名中第二个字符为_的员工名  
+select last_name  
+from employees  
+where last_name like '_\_%';  
+####between and
+>提高语句的简洁度  
+>包含临界值  
+>两个临界值不要调换顺序
+
+案例1：查询员工编号在100到120之间的员工信息  
+select *  
+from employees  
+where employee_id between 120 and 100;  
+####in
+>判断某字段的值是否属于in列表中的某一项  
+>特点：  
+>提高语句简洁度  
+>in列表的值类型必须一致或兼容
+
+
+案例：查询员工的工种编号是IT，AD，AS中的一个员工名和工种编号  
+select last_name,job_id  
+from employees  
+where job_id in('IT','AD','AS');  
+####is null
+案例1：查询没有奖金的员工名和奖金率  
+select last_name,commission_pct  
+from employees  
+where commission_pct is null  
+####安全等于 <=>
+案例1：查询没有奖金的员工名和奖金率  
+select last_name,commission_pct  
+from employees  
+where commission_pct <=> null
+案例2：查询工资为12000的员工信息
+select last_name,salary  
+from employees  
+where salary <=> 12000;  
+##排序查询
+>语法  
+>select 查询列表  
+>【where 筛选条件】  
+>order by 排序列表【asc|desc】  
+>特点：
+>1.asc代表的是升序，desc代表的是降序
+>如果不写，默认是升序  
+>order by 子句中可以支持单个字段，多个字段，表达式，函数，别名  
+>order by 子句一般是放在查询语句的最后面，limit子句除外
+
+案例1：查询员工信息，要求工资从高到底排序  
+select * from employees order by salary desc;  
+案例2：查询员工信息，要求先按工资升序，再按员工编号降序【按多个字段排序】  
+select *  
+from employees  
+order by salary asc,employee_id dexc;  
+##常见函数
+>优点  
+>1，隐藏了实现细节  
+>2，提高代码的重用性  
+>调用：select 函数名2（实参列表） 【from 表】；  
+>特点：  
+>1，叫什么    
+>2，干什么    
+>分类：  
+>1，单行函数   
+>2，分组函数：统计使用  
+
+###1.字符函数
+####length 获取参数值得字节个数
+select length('john');
+####concat 拼接字符
+select concat(lase_name,'_',first_name) 姓名 from employees;    
+用_把姓和名拼接起来
+####upper，lower 变大小写
