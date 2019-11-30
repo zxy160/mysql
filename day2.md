@@ -1,4 +1,4 @@
-##条件查询
+## 条件查询
 语法：  
     select    查询列表  
     from      表名  
@@ -16,19 +16,19 @@
    between and  
    in  
    is null  
-###1.按条件表达式筛选  
+### 1.按条件表达式筛选  
 案例1：查询工资>12000的员工信息  
 select *   
 from employees  
 where salary>12000;  
-###2.按逻辑表达式筛选
+### 2.按逻辑表达式筛选
 案例1：查询工资在10000到20000之间的员工名，工资，以及奖金  
 select last_name,salary,commission_pct   
 from employees  
 where salary>=10000 and salary<=20000  
-###3.模糊查询
+### 3.模糊查询
 
-####like
+#### like
 >like  
 特点：  
 一般和通配符搭配使用  
@@ -48,7 +48,7 @@ where  last_name like '__n_l';
 select last_name  
 from employees  
 where last_name like '_\_%';  
-####between and
+#### between and
 >提高语句的简洁度  
 >包含临界值  
 >两个临界值不要调换顺序
@@ -57,7 +57,7 @@ where last_name like '_\_%';
 select *  
 from employees  
 where employee_id between 120 and 100;  
-####in
+#### in
 >判断某字段的值是否属于in列表中的某一项  
 >特点：  
 >提高语句简洁度  
@@ -68,12 +68,12 @@ where employee_id between 120 and 100;
 select last_name,job_id  
 from employees  
 where job_id in('IT','AD','AS');  
-####is null
+#### is null
 案例1：查询没有奖金的员工名和奖金率  
 select last_name,commission_pct  
 from employees  
 where commission_pct is null  
-####安全等于 <=>
+#### 安全等于 <=>
 案例1：查询没有奖金的员工名和奖金率  
 select last_name,commission_pct  
 from employees  
@@ -82,7 +82,7 @@ where commission_pct <=> null
 select last_name,salary  
 from employees  
 where salary <=> 12000;  
-##排序查询
+## 排序查询
 >语法  
 >select 查询列表  
 >【where 筛选条件】  
@@ -99,7 +99,7 @@ select * from employees order by salary desc;
 select *  
 from employees  
 order by salary asc,employee_id dexc;  
-##常见函数
+## 常见函数
 >优点  
 >1，隐藏了实现细节  
 >2，提高代码的重用性  
@@ -111,10 +111,10 @@ order by salary asc,employee_id dexc;
 >1，单行函数   
 >2，分组函数：统计使用  
 
-###1.字符函数
+### 1.字符函数
 ####length 获取参数值得字节个数
 select length('john');
-####concat 拼接字符
+#### concat 拼接字符
 select concat(lase_name,'_',first_name) 姓名 from employees;    
 用_把姓和名拼接起来
-####upper，lower 变大小写
+#### upper，lower 变大小写

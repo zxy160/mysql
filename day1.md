@@ -1,5 +1,5 @@
 ![](1.png)
-###查看数据库版本
+### 查看数据库版本
 方法一：登录到mysql服务端
 select version();
 方式二：没有登录到mysql服务端
@@ -7,7 +7,7 @@ mysql --version
 或
 mysql -V
 
-###mysql的常用命令
+### mysql的常用命令
 1. show databases;//查看所有库  
 2. use name(库名);//打开name库  
 3. show tables;//查看当前库的所有表  
@@ -21,7 +21,7 @@ mysql -V
 7. desc name(表名);//查看表结构  
 8. select * from name(表名);//查看表是否有数据  
 
-###MYsql 的语法规范
+### MYsql 的语法规范
 1. 不区分大小写
 2. 每条命令最好赢分号结尾
 3. 每条命令根据需要，可以进行缩进或换行
@@ -30,7 +30,7 @@ mysql -V
    单行注释：-- 注释文字
    多行注释：/*注释文字*/
 
-#DQL语言的学习
+# DQL语言的学习
 * 基础查询  
 >语法：  
 >select 查询列表 from 表名;  
